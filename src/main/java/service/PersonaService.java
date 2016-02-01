@@ -30,5 +30,5 @@ public class PersonaService {
     public void delete(Persona persona){
         personaDao.makeTransient(persona);
     }
-
+//Este es un comentario
 }
