@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+
+      xmlns:fn="http://xmlns.jcp.org/jsp/jstl/functions"
+   >
+      
+    <h:head>
+        <title>Ver Personas</title>
+        
+    </h:head>
+     
+    <h:body>
+
+        <ui:composition template="/templates/layout.xhtml">
+
+
+        <ui:define name="content">
+
+        <f:view>
+            <f:metadata>
+                <f:viewAction action="#{viewPersonaBean.init}"  onPostback="false"/>
+            </f:metadata>
+        </f:view>
+
+
+<h:link outcome="crearPersona" value="Crear Persona"  styleClass="btn btn-primary"/>
+
+
+            <h:form  id="frminsertar">
+
+
+          <br/>
+
+
+
+          <br/>
+           <br/>
+          <p:outputPanel id="panel">
+            <p:dataTable  styleClass="table table-striped table-bordered" var="per" value="#{viewPersonaBean.personas}"  style="width: 1050px"
+                         emptyMessage="No hay personas disponibles"
+                         paginatorPosition="bottom"
+                         paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                         rowsPerPageTemplate="5,10,15" id="tpersona">
+                <f:facet name="header">
+            Lista de personas
+                </f:facet>
+
+
+                         <p:column headerText="Nombre">
+                          <h:link value="#{per.nombre}" outcome="crearPersona" title="#{per.nombre}">
+                             <f:param name="id" value="#{per.id}"></f:param>
+                             </h:link>
+                         </p:column>
+
+                         <p:column headerText="Apellido">
+                             <h:outputText value="#{per.apellido}"/>
+                         </p:column>
+
+                         <p:column headerText="Correo" style="width:200px;">
+                             <h:outputText value="#{per.email}"/>
+                         </p:column>
+
+                <p:column headerText="Fecha Nacimiento" style="width:200px;">
+                             <h:outputText value="#{per.fechaNacimiento}">
+                             <f:convertDateTime pattern="dd/MM/yyyy" />
+                             </h:outputText>
+                         </p:column>
+                 <p:column headerText="Estado" style="width:100px;">
+                     <h:outputText value="#{per.status.nombre}"/>
+                         </p:column>
+                <p:column headerText="Modal" style="width:100px;">
+                    <button type="button" class="btn btn-primary    " data-toggle="modal" data-target="#myModal">
+                        Launch demo modal
+                    </button>
+                </p:column>
+
+                <f:facet name="footer">
+                    In total there are #{fn:length(viewPersonaBean.personas)} cars.
+                </f:facet>
+            </p:dataTable>
+         </p:outputPanel>
+
+          <br/>
+          <br/>
+          <br/>
+          <br/>
+<!-- Button trigger modal -->
+
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true"></span></button>
+        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" style="ali`" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+        </h:form>
+
+        </ui:define>
+
+
+
+        </ui:composition>
+    </h:body>
+        
+</html>

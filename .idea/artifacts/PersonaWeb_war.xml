@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="PersonaWeb:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <root id="archive" name="PersonaWeb-1.0-SNAPSHOT.war">
+      <element id="artifact" artifact-name="PersonaWeb:war exploded" />
+    </root>
+  </artifact>
+</component>

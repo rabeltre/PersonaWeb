@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="model.Persona" table="persona">
+        <id column="person_id" name="id">
+            <generator class="identity"/>
+        </id>
+        <property name="nombre" column="nombre"/>
+        <property name="email" column="email"/>
+        <property name="apellido" column="apellido"/>
+        <property name="fechaNacimiento" column="fecha_nacimiento"/>
+
+    </class>
+
+
+</hibernate-mapping>

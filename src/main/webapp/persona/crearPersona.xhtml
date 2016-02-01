@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+      
+    <h:head>
+        <title>Crear Persona</title>
+        
+    </h:head>
+    <h:body>
+    <ui:composition template="/templates/layout.xhtml">
+
+
+
+         <ui:define name="content">
+
+        <f:view>
+                <f:metadata>
+                    <f:viewAction action="#{createPersonaBean.init}" onPostback="false"/>
+                    <f:viewParam id="id" name="id" value="#{createPersonaBean.id}"/>
+                </f:metadata>
+            </f:view>
+
+
+
+                     <div id="cuerpo" class="container">
+
+                         <div class="panel panel-primary">
+                             <div class="panel-heading">Panel Heading</div>
+                             <div class="panel-body">
+                                 <h:form id="frminsertar">
+
+
+                                     <div class="form-group">
+                                         <p:outputLabel for="name" value="Nombre:"/>
+                                         <span id="helpBlock1" class="help-block">
+                                             <h:message styleClass="text-danger" for="name"/></span>
+
+                                         <h:inputText id="name"
+                                                      value ="#{createPersonaBean.persona.nombre}"
+                                                      styleClass="form-control"/>
+
+
+                                     </div>
+
+
+                                     <div class="form-group">
+                                         <label for="apellido">Apellido:</label>
+                                          <span id="helpBlock2" class="help-block">
+                                             <h:message styleClass="text-danger" for="apellido"/></span>
+                                         <h:inputText id="apellido" required="true"
+
+                                                      value ="#{createPersonaBean.persona.apellido}"
+                                                      styleClass="form-control"  />
+
+
+                                     </div>
+                                     <div class="form-group">
+                                         <label for="email">Email:</label>
+                                          <span id="helpBlock3" class="help-block">
+                                             <h:message styleClass="text-danger" for="email"/></span>
+                                         <h:inputText id="email"
+                                                      value ="#{createPersonaBean.persona.email}"
+                                                      styleClass="form-control"/>
+                                     </div>
+                                     <div class="form-group">
+                                         <label for="fecha_nacimiento">Fecha de nacimiento:</label>
+                                          <span id="helpBlock4" class="help-block">
+                                             <h:message styleClass="text-danger" for="fecha_nacimiento"/></span>
+                                         <p:calendar  value="#{createPersonaBean.persona.fechaNacimiento}" id="fecha_nacimiento" pattern="dd/MM/yyyy"/>
+                                     </div>
+
+                                     <p:commandButton  styleClass="btn btn-primary" value="Guardar" update=":frminsertar" action="#{createPersonaBean.onSave}"/>
+
+                                     <p:spacer width="30" height="10" rendered="#{createPersonaBean.accion}" />
+
+                                     <p:commandButton styleClass="btn btn-primary"
+                                                      value="Eliminar" icon="ui-icon-closethick" rendered="#{createPersonaBean.accion}"
+                                                      action="#{createPersonaBean.onDelete}" update=":frmDialogo">
+                                         <p:confirm header="Confirmacion" message="Estas seguro que quieres eliminar a esta persona?" icon="ui-icon-alert"/>
+                                     </p:commandButton>
+
+                                     <p:spacer width="30" height="10" />
+
+                                     <p:commandButton styleClass="btn btn-primary"
+                                                      value="Cancelar"  immediate="true" action="viewPersona?faces-redirect=true"/>
+
+
+                                     <!--EJEMPLO DE COMO PONERLE UN ICONO DE BOOTSTRAP-->
+                                     <!--<p:commandButton styleClass="btn btn-primary glyphicon glyphicon-search" value=""></p:commandButton>-->
+
+
+                                 </h:form>
+
+                                 <h:form id="frmDialogo">
+                                     <p:confirmDialog global="true" showEffect="explode" hideEffect="explode" width="215" closable="false" closeOnEscape="">
+                                         <p:commandButton value="Yes" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+                                         <p:spacer width="30" height="10" />
+                                         <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+                                     </p:confirmDialog>
+                                 </h:form>
+                             </div>
+
+
+                         </div>
+                     </div>
+
+
+
+
+
+
+
+               </ui:define>
+
+
+        </ui:composition>
+    </h:body>
+</html>

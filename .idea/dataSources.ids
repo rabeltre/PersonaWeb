@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="dataSourceStorage">
+  <data-source name="MySQL - pruebas@localhost" uuid="073cac9f-203f-46ed-9e06-d44a1712ec54">
+    <database-info product="MySQL" version="5.5.5-10.1.8-MariaDB" jdbc-version="4.0" driver-name="MySQL Connector Java" driver-version="mysql-connector-java-5.1.35 ( Revision: 5fb9c5849535c13917c2cf9baaece6ef9693ef27 )">
+      <extra-name-characters>#@</extra-name-characters>
+      <identifier-quote-string>`</identifier-quote-string>
+    </database-info>
+    <case-sensitivity plain-identifiers="lower" quoted-identifiers="lower"/>
+    <schema name="" catalog="pruebas"/>
+    <table name="category" schema="" catalog="pruebas" type="TABLE">
+      <column name="CATEGORY_ID" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5" autoIncrement="true"/>
+      <column name="name" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="CATEGORY_ID"/>
+      <exported-key name="FK185958CF801A405D" table="product" schema="" catalog="pruebas" columns="CATEGORY_ID"/>
+    </table>
+    <table name="clientes" schema="" catalog="pruebas" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="nombre" sqlType="VARCHAR" precision="50" scale="0" nullable="false" jdbcType="12"/>
+      <column name="cedula" sqlType="VARCHAR" precision="13" scale="0" nullable="false" jdbcType="12"/>
+      <column name="telefono" sqlType="VARCHAR" precision="12" scale="0" nullable="false" jdbcType="12"/>
+      <column name="ncontrato" sqlType="VARCHAR" precision="4" scale="0" nullable="false" jdbcType="12"/>
+      <column name="empresa" sqlType="VARCHAR" precision="30" scale="0" nullable="false" jdbcType="12"/>
+      <column name="profesion" sqlType="VARCHAR" precision="20" scale="0" nullable="false" jdbcType="12"/>
+      <column name="ciudad" sqlType="VARCHAR" precision="20" scale="0" nullable="false" jdbcType="12"/>
+      <column name="celular" sqlType="VARCHAR" precision="12" scale="0" nullable="false" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <exported-key name="FK6AE6A4CEEE6A59B" table="venta" schema="" catalog="pruebas" columns="idcliente"/>
+      <index name="ncontrato" unique="true" columns="ncontrato"/>
+    </table>
+    <table name="correoelectronico" schema="" catalog="pruebas" type="TABLE">
+      <column name="IdCorreo" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="DireccionCorreo" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="IdProfesor" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="idx" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="IdCorreo"/>
+      <foreign-key name="FK8FC4D21DA3A7D8AF" columns="IdProfesor" ref-table="profesor" ref-schema="" ref-catalog="pruebas" ref-columns="Id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="FK8FC4D21DA3A7D8AF" unique="false" columns="IdProfesor"/>
+    </table>
+    <table name="department" schema="" catalog="pruebas" type="TABLE">
+      <column name="department_id" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5" autoIncrement="true"/>
+      <column name="dept_name" sqlType="VARCHAR" precision="50" scale="0" nullable="false" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="department_id"/>
+      <exported-key name="FK4722E6AEECF2631D" table="employee" schema="" catalog="pruebas" columns="department_id"/>
+    </table>
+    <table name="detalleventa" schema="" catalog="pruebas" type="TABLE">
+      <column name="idventa" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="idproducto" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="cantidad" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="precioventa" sqlType="FLOAT" precision="12" scale="0" nullable="false" jdbcType="7"/>
+      <column name="iddetalle" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <primary-key name="PRIMARY" columns="iddetalle"/>
+    </table>
+    <table name="empleados" schema="" catalog="pruebas" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="nombre" sqlType="VARCHAR" precision="50" scale="0" nullable="false" jdbcType="12"/>
+      <column name="cedula" sqlType="VARCHAR" precision="13" scale="0" nullable="false" jdbcType="12"/>
+      <column name="telefono" sqlType="VARCHAR" precision="12" scale="0" nullable="false" jdbcType="12"/>
+      <column name="funcion" sqlType="VARCHAR" precision="20" scale="0" nullable="false" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="id"/>
+    </table>
+    <table name="employee" schema="" catalog="pruebas" type="TABLE">
+      <column name="employee_id" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5" autoIncrement="true"/>
+      <column name="department_id" sqlType="BIGINT" precision="19" scale="0" nullable="true" jdbcType="-5"/>
+      <column name="firstname" sqlType="VARCHAR" precision="50" scale="0" nullable="true" jdbcType="12"/>
+      <column name="lastname" sqlType="VARCHAR" precision="50" scale="0" nullable="true" jdbcType="12"/>
+      <column name="birth_date" sqlType="DATE" precision="10" scale="0" nullable="true" jdbcType="91"/>
+      <column name="cell_phone" sqlType="VARCHAR" precision="15" scale="0" nullable="true" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="employee_id"/>
+      <foreign-key name="FK4722E6AEECF2631D" columns="department_id" ref-table="department" ref-schema="" ref-catalog="pruebas" ref-columns="department_id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="FK4722E6AEECF2631D" unique="false" columns="department_id"/>
+    </table>
+    <table name="entradas" schema="" catalog="pruebas" type="TABLE">
+      <column name="idproducto" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="cantidad" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="totalpagado" sqlType="FLOAT" precision="12" scale="0" nullable="false" jdbcType="7"/>
+      <column name="fecha" sqlType="DATE" precision="10" scale="0" nullable="false" jdbcType="91"/>
+    </table>
+    <table name="gastos" schema="" catalog="pruebas" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="descripcion" sqlType="VARCHAR" precision="40" scale="0" nullable="false" jdbcType="12"/>
+      <column name="monto" sqlType="FLOAT" precision="12" scale="0" nullable="false" jdbcType="7"/>
+      <column name="tipo" sqlType="VARCHAR" precision="12" scale="0" nullable="false" jdbcType="12"/>
+      <column name="fecha" sqlType="DATE" precision="10" scale="0" nullable="false" jdbcType="91"/>
+      <column name="idventa" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="id"/>
+    </table>
+    <table name="old_category" schema="" catalog="pruebas" type="TABLE">
+      <column name="CATEGORY_ID" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5" autoIncrement="true"/>
+      <column name="name" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="CATEGORY_ID"/>
+    </table>
+    <table name="orders" schema="" catalog="pruebas" type="TABLE">
+      <column name="ORDER_ID" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="amount" sqlType="FLOAT" precision="12" scale="0" nullable="false" jdbcType="7"/>
+      <column name="CUSTOMER_NAME" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="PURCHASE_DATE" sqlType="DATE" precision="10" scale="0" nullable="true" jdbcType="91"/>
+      <column name="PRODUCT_ID" sqlType="BIGINT" precision="19" scale="0" nullable="true" jdbcType="-5"/>
+      <primary-key name="PRIMARY" columns="ORDER_ID"/>
+      <foreign-key name="FK8B7256E5E381C797" columns="PRODUCT_ID" ref-table="product" ref-schema="" ref-catalog="pruebas" ref-columns="PRODUCT_ID" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="FK8B7256E5E381C797" unique="false" columns="PRODUCT_ID"/>
+    </table>
+    <table name="pagomensual" schema="" catalog="pruebas" type="TABLE">
+      <column name="idvm" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="fecha" sqlType="DATE" precision="10" scale="0" nullable="false" jdbcType="91"/>
+      <column name="montopagado" sqlType="FLOAT" precision="12" scale="0" nullable="false" jdbcType="7"/>
+    </table>
+    <table name="persona1" schema="" catalog="pruebas" type="TABLE">
+      <column name="personaId" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="nombre" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="apellido" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="email" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="fechaNacimiento" sqlType="DATETIME" precision="19" scale="0" nullable="true" jdbcType="93"/>
+      <primary-key name="PRIMARY" columns="personaId"/>
+    </table>
+    <table name="product" schema="" catalog="pruebas" type="TABLE">
+      <column name="PRODUCT_ID" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5" autoIncrement="true"/>
+      <column name="description" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="name" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="price" sqlType="FLOAT" precision="12" scale="0" nullable="false" jdbcType="7"/>
+      <column name="CATEGORY_ID" sqlType="BIGINT" precision="19" scale="0" nullable="true" jdbcType="-5"/>
+      <primary-key name="PRIMARY" columns="PRODUCT_ID"/>
+      <foreign-key name="FK185958CF801A405D" columns="CATEGORY_ID" ref-table="category" ref-schema="" ref-catalog="pruebas" ref-columns="CATEGORY_ID" update-rule="3" delete-rule="3" deferrability="2"/>
+      <exported-key name="FK8B7256E5E381C797" table="orders" schema="" catalog="pruebas" columns="PRODUCT_ID"/>
+      <index name="FK185958CF801A405D" unique="false" columns="CATEGORY_ID"/>
+    </table>
+    <table name="productos" schema="" catalog="pruebas" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="nombre" sqlType="VARCHAR" precision="40" scale="0" nullable="false" jdbcType="12"/>
+      <column name="cantidad" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="precio" sqlType="FLOAT" precision="12" scale="0" nullable="false" jdbcType="7"/>
+      <column name="preciodeventa" sqlType="FLOAT" precision="12" scale="0" nullable="false" jdbcType="7"/>
+      <column name="proveedor" sqlType="VARCHAR" precision="40" scale="0" nullable="false" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="id"/>
+    </table>
+    <table name="profesor" schema="" catalog="pruebas" type="TABLE">
+      <column name="Id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="ape1" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="ape2" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="nombre" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="Id"/>
+      <exported-key name="FK8FC4D21DA3A7D8AF" table="correoelectronico" schema="" catalog="pruebas" columns="IdProfesor"/>
+    </table>
+    <table name="tproducto" schema="" catalog="pruebas" type="TABLE">
+      <column name="idProducto" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="codigoBarras" sqlType="VARCHAR" precision="70" scale="0" nullable="false" jdbcType="12"/>
+      <column name="nombre" sqlType="VARCHAR" precision="50" scale="0" nullable="false" jdbcType="12"/>
+      <column name="precioVentaUnitario" sqlType="DECIMAL" precision="18" scale="2" nullable="false" jdbcType="3"/>
+      <column name="cantidad" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="idProducto"/>
+      <exported-key name="tventadetalle_ibfk_2" table="tventadetalle" schema="" catalog="pruebas" columns="idProducto"/>
+    </table>
+    <table name="tventa" schema="" catalog="pruebas" type="TABLE">
+      <column name="idVenta" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="precioVentaTotal" sqlType="DECIMAL" precision="18" scale="2" nullable="false" jdbcType="3"/>
+      <column name="fechaRegistro" sqlType="TIMESTAMP" precision="19" scale="0" nullable="false" jdbcType="93" def="Q1VSUkVOVF9USU1FU1RBTVA="/>
+      <primary-key name="PRIMARY" columns="idVenta"/>
+      <exported-key name="tventadetalle_ibfk_1" table="tventadetalle" schema="" catalog="pruebas" columns="idVenta"/>
+    </table>
+    <table name="tventadetalle" schema="" catalog="pruebas" type="TABLE">
+      <column name="idVentaDetalle" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="idVenta" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="idProducto" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="codigoBarrasProducto" sqlType="VARCHAR" precision="20" scale="0" nullable="false" jdbcType="12"/>
+      <column name="nombreProducto" sqlType="VARCHAR" precision="50" scale="0" nullable="false" jdbcType="12"/>
+      <column name="precioVentaUnitarioProducto" sqlType="DECIMAL" precision="18" scale="2" nullable="false" jdbcType="3"/>
+      <column name="cantidad" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="totalPrecioVenta" sqlType="DECIMAL" precision="18" scale="2" nullable="false" jdbcType="3"/>
+      <primary-key name="PRIMARY" columns="idVentaDetalle"/>
+      <foreign-key name="tventadetalle_ibfk_1" columns="idVenta" ref-table="tventa" ref-schema="" ref-catalog="pruebas" ref-columns="idVenta" update-rule="0" delete-rule="0" deferrability="2"/>
+      <foreign-key name="tventadetalle_ibfk_2" columns="idProducto" ref-table="tproducto" ref-schema="" ref-catalog="pruebas" ref-columns="idProducto" update-rule="0" delete-rule="0" deferrability="2"/>
+    </table>
+    <table name="venta" schema="" catalog="pruebas" type="TABLE">
+      <column name="idventa" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="idcliente" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="fecha" sqlType="DATE" precision="10" scale="0" nullable="false" jdbcType="91"/>
+      <column name="empleado" sqlType="VARCHAR" precision="49" scale="0" nullable="false" jdbcType="12"/>
+      <column name="comision" sqlType="FLOAT" precision="12" scale="0" nullable="false" jdbcType="7"/>
+      <column name="totalventa" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="financiamiento" sqlType="VARCHAR" precision="15" scale="0" nullable="false" jdbcType="12"/>
+      <column name="NCF" sqlType="VARCHAR" precision="19" scale="0" nullable="false" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="idventa"/>
+      <foreign-key name="FK6AE6A4CEEE6A59B" columns="idcliente" ref-table="clientes" ref-schema="" ref-catalog="pruebas" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="FK6AE6A4CEEE6A59B" unique="false" columns="idcliente"/>
+    </table>
+    <table name="ventamensual" schema="" catalog="pruebas" type="TABLE">
+      <column name="idvm" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="idventa" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="totalpagado" sqlType="FLOAT" precision="12" scale="0" nullable="false" jdbcType="7"/>
+      <primary-key name="PRIMARY" columns="idvm"/>
+    </table>
+  </data-source>
+</component>
